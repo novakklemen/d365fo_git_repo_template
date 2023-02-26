@@ -1,0 +1,6 @@
+###############################################################################
+# Set default behavior to automatically normalize line endings.
+###############################################################################
+## Never mess with line endings - D365FO development is only on Windows
+* -text
+
