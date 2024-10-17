@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<AxClass xmlns:i="http://www.w3.org/2001/XMLSchema-instance">
+	<Name>DisplayAOSPackageFolder</Name>
+	<SourceCode>
+		<Declaration><![CDATA[
+using Microsoft.Dynamics.ApplicationPlatform.Environment;
+
+/// <summary>
+/// Displays the local folder path for Application Object Server (AOS) packages.
+/// This class provides a utility to fetch and show the local directory used
+/// for storing AOS packages, facilitating diagnostics and configurations checks.
+/// </summary>
+internal final class DisplayAOSPackageFolder
+{
+}
+]]></Declaration>
+		<Methods>
+			<Method>
+				<Name>main</Name>
+				<Source><![CDATA[
+    /// <summary>
+    /// Class entry point. The system will call this method when a designated menu 
+    /// is selected or when execution starts and this class is set as the startup class.
+    /// </summary>
+    /// <param name = "_args">The specified arguments.</param>
+    public static void main(Args _args)
+    {
+        // Retrieve the local path for AOS packages using the appropriate method or configuration key
+        IApplicationEnvironment applicationEnvironment = EnvironmentFactory::GetApplicationEnvironment();
+        str localPackageDirectory = applicationEnvironment.Aos.MetadataDirectory;
+
+        // Display the local package directory path in the infolog
+        info(strFmt("The local folder for AOS packages is: %1", localPackageDirectory));
+    }
+
+]]></Source>
+			</Method>
+		</Methods>
+	</SourceCode>
+</AxClass>

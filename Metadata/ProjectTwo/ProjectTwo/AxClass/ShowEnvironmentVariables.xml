@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<AxClass xmlns:i="http://www.w3.org/2001/XMLSchema-instance">
+	<Name>ShowEnvironmentVariables</Name>
+	<SourceCode>
+		<Declaration><![CDATA[
+/// <summary>
+/// This internal final class is designed to display all environment variables available in the current system's context.
+/// It's typically invoked when a specific menu is selected or as a startup class during application initialization.
+/// </summary>
+internal final class ShowEnvironmentVariables
+{
+}
+]]></Declaration>
+		<Methods>
+			<Method>
+				<Name>main</Name>
+				<Source><![CDATA[
+    /// <summary>
+    /// The entry point of the class which gets executed by the system. This static method retrieves and displays
+    /// the environment variables present in the system.
+    /// </summary>
+    /// <param name="_args">Arguments passed to the method, though not utilized within this method.</param>
+    public static void main(Args _args)
+    {
+        // Retrieve all environment variables from the system as a dictionary collection.
+        System.Collections.IDictionary envVariables = System.Environment::GetEnvironmentVariables();
+
+        // Acquire an enumerator to iterate through the dictionary.
+        System.Collections.IEnumerator enumerator = envVariables.GetEnumerator();
+
+        // Iterate through all entries in the environment variables dictionary.
+        str key, value;
+        while (enumerator.MoveNext())
+        {
+            System.Collections.DictionaryEntry entry = enumerator.get_Current();
+            key = entry.Key.ToString();
+            value = entry.Value.ToString();
+
+            // Print each key-value pair to the information log.
+            info(strFmt("Key: %1, Value: %2", key, value));
+        }
+    }
+
+]]></Source>
+			</Method>
+		</Methods>
+	</SourceCode>
+</AxClass>
