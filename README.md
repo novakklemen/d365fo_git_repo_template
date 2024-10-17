@@ -1,7 +1,7 @@
 # Introduction
 Welcome to the superhero D365FO R&D team. ;) Join us in this adventure of building the best D365FO customization in the world!
 
-This is a template repository to show you how you can use multiple projects (Git repositories) on D365FO OneBox using Git. 
+This template repository shows you how to use multiple projects (Git repositories) on D365FO **OneBox** or **UDE** using Git. 
 
 ## Instructions
 
@@ -9,7 +9,7 @@ The Git repository contains a single root folder with all the files and subfolde
 
 > Using the described approach you can use multiple Git repositories (e.g., solutions or customizations) on the same D365FO OneBox environment without hassle.
 
-To do so, follow the next instructions (before you start make sure you have Visual Studio closed):
+To do so, follow the next instructions (before you start, make sure you have Visual Studio closed):
 
 1. _Create Symbolic Links to your D365FO models in **<drive>:\AOSService\PackagesLocalDirectory** executing the following commands in `PowerShell` as an `Administrator`_
 
@@ -23,9 +23,15 @@ If you only need some of the models, please delete the not needed ones directly 
 
 ### Adding new models to Git repository
 
-All new models will be created in **<drive>:\AOSService\PackagesLocalDirectory**. After you have create the model, please close Visual Studio and move the model to **Metadata* folder.
+All new models will be created in **<drive>:\AOSService\PackagesLocalDirectory**. After you have created the model, please close Visual Studio and move the model to **Metadata* folder.
 
-> NOTE: You need to run the `.\AOS_CreateMetadataSymbolicLinks.ps1` to create symbolic links again.
+> NOTE: To create symbolic links again, you need to run the `.\AOS_CreateMetadataSymbolicLinks.ps1`.
+
+### Using scripts with Unified Development Environment (UDE)
+
+Both scripts detect the D365FO package's local folder, but with UDE environments, you have a custom metadata folder, which is set through the `'Visual Studio > Dynamics 365 Extension > Configure Metadata'` in setting `'Folder for your own custom metadata'`. To create a symbolic link, use `.\AOS_CreateMetadataSymbolicLinks.ps1 -PackagesLocalFolder "C:\CustomAOS\PackagesLocalDirectory"`.
+
+> NOTE: To remove use the same parameter with script `.\AOS_RemoveMetadataSymbolicLinks.ps1 -PackagesLocalFolder "C:\CustomAOS\PackagesLocalDirectory"`.
 
 ## Folder structure
 
@@ -43,15 +49,23 @@ It's up to you to write the contribution guidelines for your team. ;)
 
 ## Useful Visual Studio extensions
 
-At the time this repository was created Visual Studio 2019 is still the main developement tool.
+### Visual Studio 2019
 
-If you are using GitFlow and are doing Pull Request it makes sense you install the following VS extensions:
+If you are using GitFlow and are doing Pull Request, it makes sense you install the following VS extensions:
 - [GitFlow](https://marketplace.visualstudio.com/items?itemName=vs-publisher-57624.GitFlowforVisualStudio2019)
 - [Pull Requests](https://marketplace.visualstudio.com/items?itemName=VSIDEVersionControlMSFT.pr4vs)
- 
+
+### Visual Studio 2022
+
+To use GifFlow use the following extension:
+
+- [Gitflow](https://marketplace.visualstudio.com/items?itemName=vs-publisher-57624.GitFlowforVisualStudio2022)
+
+> NOTE: Pull requests are already supported in Visual Studio 2022 Git client.
+
 ## Useful links
 
-Many online resources that can help you get started in the wonderful world of .NET and X++. Here are some resources to get you started.
+There are many online resources that can help you get started in the wonderful world of .NET and X++. Here are some resources to get you started.
 
 Useful X++ and Microsoft Dynamics 365 Finance and Operations application development links:
 
@@ -59,6 +73,7 @@ Useful X++ and Microsoft Dynamics 365 Finance and Operations application develop
 - [X++ language reference](https://docs.microsoft.com/en-us/dynamics365/fin-ops-core/dev-itpro/dev-ref/xpp-language-reference)
 - [API, class, and table resources](https://docs.microsoft.com/en-us/dynamics365/fin-ops-core/dev-itpro/dev-ref/api-reference)
 - [Learn Finance and Operations](https://docs.microsoft.com/en-us/learn/browse/?roles=developer&products=dynamics-finance%2Cdynamics-finance-operations%2Cdynamics-scm)
+- [Unified developer experience for finance and operations apps](https://learn.microsoft.com/en-us/power-platform/developer/unified-experience/finance-operations-dev-overview)
 - [Udemy: Microsoft Dynamics 365 Courses](https://www.udemy.com/topic/microsoft-dynamics-365)
 - Forums:
   - [Dynamics 365 Community](https://community.dynamics.com/)
